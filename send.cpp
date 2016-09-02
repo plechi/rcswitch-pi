@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	mySwitch.enableTransmit(PIN);
     
     mySwitch.setProtocol(protocol, pulseLength);
-    mySwitch.send(codeode, length);
+    mySwitch.send(code, length);
     
 	return 0;
 }

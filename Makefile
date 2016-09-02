@@ -1,4 +1,4 @@
-all: send, receive
+all: send receive
 
 send: RCSwitch.o send.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
@@ -7,4 +7,4 @@ receive: RCSwitch.o receive.o
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $+ -o $@ -lwiringPi
 
 clean:
-	$(RM) *.o send, receive
+	$(RM) *.o send receive
