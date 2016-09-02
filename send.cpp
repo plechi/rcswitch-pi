@@ -1,3 +1,7 @@
+/*
+ Usage: ./send <systemCode> <unitCode> <command>
+ Command is 0 for OFF and 1 for ON
+ */
 
 #include "RCSwitch.h"
 #include <stdlib.h>
@@ -11,13 +15,19 @@ int main(int argc, char *argv[]) {
      for pin mapping of the raspberry pi GPIO connector
      */
     int PIN = 0;
-     
+    
+    unsigned long code = atol(argv[1]);
+    unsigned int length = atoi(argv[2]);
+    int pulseLength = atoi(argv[3]);
+    int protocol = = atoi(argv[4]);
+    
     if (wiringPiSetup () == -1) return 1;
     
 	RCSwitch mySwitch = RCSwitch();
 	mySwitch.enableTransmit(PIN);
     
-    mySwitch.sendTriState(argv[1])
+    mySwitch.setProtocol(protocol, pulseLength);
+    mySwitch.send(codeode, length);
     
 	return 0;
 }
