@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     unsigned long code = atol(argv[1]);
     unsigned int length = atoi(argv[2]);
     int pulseLength = atoi(argv[3]);
-    int protocol = = atoi(argv[4]);
+    int protocol = atoi(argv[4]);
     
     if (wiringPiSetup () == -1) return 1;
     
