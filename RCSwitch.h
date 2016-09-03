@@ -33,7 +33,7 @@
 #elif defined(ENERGIA) // LaunchPad, FraunchPad and StellarPad specific
     #include "Energia.h"
 #else
-    #include "WProgram.h"
+    #include "wiringPi.h"
 #endif
 
 
