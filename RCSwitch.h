@@ -34,6 +34,7 @@
     #include "Energia.h"
 #else
     #include "wiringPi.h"
+    #include "piInterrupt.h"
 #endif
 
 
