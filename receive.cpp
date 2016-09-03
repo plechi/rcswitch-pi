@@ -1,6 +1,10 @@
-#include "RCSwitch.h"
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
+#include "piInterrupt.h"
+#include "RCSwitch.h"
 
 int main(int argc, char *argv[]) {
 
