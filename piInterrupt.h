@@ -1,3 +1,7 @@
+#ifndef CHANGE
+#define CHANGE INT_EDGE_BOTH
+#endif
+
 // replace detachInterrupt() with a empty block
 #define detachInterrupt(x) do { } while(0)
 
