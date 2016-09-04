@@ -24,27 +24,32 @@ int main(int argc, char *argv[]) {
 		receiver.enableReceive(PIN);
 		
 		for(;;){
-            
-            while(!receiver.available()) {
-                sched_yield();
+            if(kbhit()){  //is true when a key was pressed
+                char c = getch();   //capture the key code and insert into c
+                if(c=='q'){
+                    exit(0);
+                }
             }
             
-            unsigned long received_value = receiver.getReceivedValue();
-            if(received_value) {
-                printf("received ");
-                //code
-                printf("%i ", received_value);
-                //length
-                printf("%i ", receiver.getReceivedBitlength());
-                //pulse
-                printf("%i ", receiver.getReceivedDelay());
-                printf("%i", receiver.getReceivedProtocol());
-                printf("\n");
-            } else {
-                printf("Unknown encoding\n");
+            
+            if(receiver.available()){
+                unsigned long received_value = receiver.getReceivedValue();
+                if(received_value) {
+                    printf("received ");
+                    //code
+                    printf("%i ", received_value);
+                    //length
+                    printf("%i ", receiver.getReceivedBitlength());
+                    //pulse
+                    printf("%i ", receiver.getReceivedDelay());
+                    printf("%i", receiver.getReceivedProtocol());
+                    printf("\n");
+                } else {
+                    printf("Unknown encoding\n");
+                }
+                fflush(stdout);
+                receiver.resetAvailable();
             }
-            fflush(stdout);
-            receiver.resetAvailable();
         }
 	}
     return 0;
