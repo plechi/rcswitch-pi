@@ -3,12 +3,24 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <sched.h>
-#include <unistd.h>
 #include "RCSwitch.h"
+#include <pthread.h>
+
+
+void stopThreadFn(){
+    do{
+        c = getchar()
+    }while(c != 'q');
+    exit(0);
+}
 
 int main(int argc, char *argv[]) {
 
+    
+    pthread_t stopThread;
+    
+    pthread_create(&stopThread const NULL, &stopThreadFn, NULL);
+    
     /*
      output PIN is hardcoded for testing purposes
      see https://projects.drogon.net/raspberry-pi/wiringpi/pins/
@@ -24,14 +36,6 @@ int main(int argc, char *argv[]) {
 		receiver.enableReceive(PIN);
 		
 		for(;;){
-            if(kbhit()){  //is true when a key was pressed
-                char c = getch();   //capture the key code and insert into c
-                if(c=='q'){
-                    exit(0);
-                }
-            }
-            
-            
             if(receiver.available()){
                 unsigned long received_value = receiver.getReceivedValue();
                 if(received_value) {
