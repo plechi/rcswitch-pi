@@ -76,6 +76,7 @@ class RCSwitch {
 
     #if not defined( RCSwitchDisableReceiving )
     void enableReceive(int interrupt);
+    void enableReceive(int interrupt, (void*) callback);
     void enableReceive();
     void disableReceive();
     bool available();
@@ -112,6 +113,8 @@ class RCSwitch {
     void send1();
     void sendSync();
     void transmit(int nHighPulses, int nLowPulses);
+    
+
 
     static char* dec2binWzerofill(unsigned long dec, unsigned int length);
     static char* dec2binWcharfill(unsigned long dec, unsigned int length, char fill);
@@ -133,6 +136,8 @@ class RCSwitch {
     static unsigned int nReceivedBitlength;
     static unsigned int nReceivedDelay;
     static unsigned int nReceivedProtocol;
+    
+    static void* callback = NULL;
     #endif
     /*
      * timings[0] contains sync timing, followed by a number of bits
