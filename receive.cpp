@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <sched.h>
+#include <unistd.h>
 #include "RCSwitch.h"
 
 int main(int argc, char *argv[]) {
@@ -38,7 +40,10 @@ int main(int argc, char *argv[]) {
 					printf("Unknown encoding\n");
 				}
 				receiver.resetAvailable();
-			}
+			}else{
+                //sched_yield();
+                sleep(1);
+            }
 		}
 		
 	}
