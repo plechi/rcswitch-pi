@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
             } else {
                 printf("Unknown encoding\n");
             }
+            fflush(stdout);
             receiver.resetAvailable();
         }
 	}
