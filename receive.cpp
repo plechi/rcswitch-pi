@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include "RCSwitch.h"
 
+RCSwitch receiver;
+
 void handle_receive_interrupt() {
     if(receiver.available()) {
 				int received_value = receiver.getReceivedValue();
@@ -40,7 +42,7 @@ int main(int argc, char *argv[]) {
         
         printf("now receiving\n");
         
-		RCSwitch receiver = RCSwitch();
+		receiver = RCSwitch();
 		receiver.enableReceive(PIN);
 		
 		do {wiringPiISR(PIN, INT_EDGE_BOTH, &handle_receive_interrupt);} while(0);
