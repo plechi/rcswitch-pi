@@ -7,6 +7,26 @@
 #include <unistd.h>
 #include "RCSwitch.h"
 
+void handle_receive_interrupt() {
+    if(receiver.available()) {
+				int received_value = receiver.getReceivedValue();
+				if(received_value) {
+					printf("received ");
+                    //code
+					printf("%i ", received_value);
+                    //length
+					printf("%i ", receiver.getReceivedBitlength());
+                    //pulse
+                    printf("%i ", receiver.getReceivedDelay());
+					printf("%i", receiver.getReceivedProtocol());
+					printf("\n");
+				} else {
+					printf("Unknown encoding\n");
+				}
+				receiver.resetAvailable();
+    }
+}
+
 int main(int argc, char *argv[]) {
 
     /*
@@ -23,28 +43,7 @@ int main(int argc, char *argv[]) {
 		RCSwitch receiver = RCSwitch();
 		receiver.enableReceive(PIN);
 		
-		while(1) {
-			if(receiver.available()) {
-				int received_value = receiver.getReceivedValue();
-				if(received_value) {
-					printf("received ");
-                    //code
-					printf("%i ", received_value);
-                    //length
-					printf("%i ", receiver.getReceivedBitlength());
-                    //pulse
-                    printf("%i ", receiver.getReceivedDelay());
-					printf("%i", receiver.getReceivedProtocol());
-					printf("\n");
-				} else {
-					printf("Unknown encoding\n");
-				}
-				receiver.resetAvailable();
-			}else{
-                //sched_yield();
-                sleep(1);
-            }
-		}
+		do {wiringPiISR(PIN, INT_EDGE_BOTH, &handle_receive_interrupt);} while(0)
 		
 	}
     return 0;
