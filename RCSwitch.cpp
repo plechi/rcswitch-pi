@@ -779,10 +779,6 @@ void RCSwitch::handleInterrupt() {
   }
   RCSwitch::timings[changeCount++] = duration;
   lastTime = time;
-    
-    if(this->available()){
-        this->callback(this);
-    }
 }
 #endif
 
