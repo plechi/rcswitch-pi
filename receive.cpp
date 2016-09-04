@@ -8,6 +8,7 @@
 
 
 void stopThreadFn(){
+    int c;
     do{
         c = getchar()
     }while(c != 'q');
@@ -19,7 +20,7 @@ int main(int argc, char *argv[]) {
     
     pthread_t stopThread;
     
-    pthread_create(&stopThread const NULL, &stopThreadFn, NULL);
+    pthread_create(&stopThread, NULL, &stopThreadFn, NULL);
     
     /*
      output PIN is hardcoded for testing purposes
