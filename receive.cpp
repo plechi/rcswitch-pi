@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	
 	if(wiringPiSetup()!= -1) {
         
-        printf("init complete;\n now receiving\n")
+        printf("now receiving\n");
         
 		RCSwitch receiver = RCSwitch();
 		receiver.enableReceive(PIN);
