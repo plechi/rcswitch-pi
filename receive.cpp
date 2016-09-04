@@ -16,6 +16,8 @@ int main(int argc, char *argv[]) {
 	
 	if(wiringPiSetup()!= -1) {
         
+        printf("init complete;\n now receiving\n")
+        
 		RCSwitch receiver = RCSwitch();
 		receiver.enableReceive(PIN);
 		
@@ -23,16 +25,14 @@ int main(int argc, char *argv[]) {
 			if(receiver.available()) {
 				int received_value = receiver.getReceivedValue();
 				if(received_value) {
-					printf("Received ");
-					printf("%i", received_value);
-					printf(" / ");
-					printf("%i", receiver.getReceivedBitlength());
-					printf(" bit ");
-					printf("Protocol: ");
+					printf("received ");
+                    //code
+					printf("%i ", received_value);
+                    //length
+					printf("%i ", receiver.getReceivedBitlength());
+                    //pulse
+                    printf("%i ", receiver.getReceivedDelay());
 					printf("%i", receiver.getReceivedProtocol());
-					printf("\n");
-                    printf("pulse: ");
-					printf("%i", receiver.getReceivedDelay());
 					printf("\n");
 				} else {
 					printf("Unknown encoding\n");
