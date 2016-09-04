@@ -10,6 +10,7 @@
 RCSwitch receiver;
 
 void handle_receive_interrupt() {
+    RCSwitch::handleInterrupt();
     if(receiver.available()) {
 				int received_value = receiver.getReceivedValue();
 				if(received_value) {

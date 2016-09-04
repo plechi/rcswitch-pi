@@ -80,6 +80,7 @@ class RCSwitch {
     void disableReceive();
     bool available();
     void resetAvailable();
+    static void handleInterrupt();
 
     unsigned long getReceivedValue();
     unsigned int getReceivedBitlength();
@@ -116,7 +117,6 @@ class RCSwitch {
     static char* dec2binWcharfill(unsigned long dec, unsigned int length, char fill);
 
     #if not defined( RCSwitchDisableReceiving )
-    static void handleInterrupt();
     static bool receiveProtocol1(unsigned int changeCount);
     static bool receiveProtocol2(unsigned int changeCount);
     static bool receiveProtocol3(unsigned int changeCount);
