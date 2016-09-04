@@ -594,12 +594,6 @@ void RCSwitch::enableReceive(int interrupt) {
   this->enableReceive();
 }
 
-void RCSwitch::enableReceive(int interrupt, void* callback) {
-  this->nReceiverInterrupt = interrupt;
-  this->callback = callback;
-  this->enableReceive();
-}
-
 void RCSwitch::enableReceive() {
   if (this->nReceiverInterrupt != -1) {
     RCSwitch::nReceivedValue = ZERO;
