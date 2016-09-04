@@ -45,7 +45,7 @@ int main(int argc, char *argv[]) {
 		receiver = RCSwitch();
 		receiver.enableReceive(PIN);
 		
-		do {wiringPiISR(PIN, INT_EDGE_BOTH, &handle_receive_interrupt);} while(0);
+		do {wiringPiISR(PIN, INT_EDGE_BOTH, &handle_receive_interrupt);} while(1);
 		
 	}
     return 0;
