@@ -6,8 +6,9 @@
 #include "RCSwitch.h"
 #include <pthread.h>
 
+void *stopThreadFn(void *);  
 
-void* stopThreadFn(){
+void* stopThreadFn(void* unused){
     int c;
     do{
         c = getchar()
