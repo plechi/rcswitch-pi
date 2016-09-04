@@ -10,10 +10,12 @@ void *stopThreadFn(void *);
 
 void* stopThreadFn(void* unused){
     int c;
-    do{
-        c = getchar()
-    }while(c != 'q');
+    do {
+        c = getchar();
+    } while(c != 'q');
+    
     exit(0);
+    
     return NULL;
 }
 
